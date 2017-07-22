@@ -55,14 +55,15 @@ namespace View
 
         private void Canccelar_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+    
+            Hide();
+            
         }
 
         private void Adicionar_Click(object sender, RoutedEventArgs e)
         {
            var IDultimo = negocioUsuario.Selecionar().OrderBy(user => user.Id).OrderByDescending(x => x.Id).Take(1).Single().Id;
 
-    
             try
             {
                 modeloUsuario.Id = IDultimo + 1;
@@ -73,11 +74,12 @@ namespace View
                 negocioUsuario.Inserir(modeloUsuario);
 
                 MessageBox.Show("Salvo com sucesso!");
+
             }
             catch (ArgumentNullException)
             {
                 MessageBox.Show("Dados nao informados!");
-            } 
+            }
             catch (InvalidOperationException)
             {
                 MessageBox.Show("Usuario ja cadastrado!");
@@ -86,8 +88,7 @@ namespace View
             {
                 MessageBox.Show("o usuario necessita ter status (verdadeiro ou falso) de administrador!!! ");
             }
-
-
+            
         }
     }
 

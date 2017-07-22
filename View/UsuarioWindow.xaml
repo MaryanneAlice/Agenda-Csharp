@@ -16,6 +16,6 @@
         <Label Content="Perquise por:" FontSize="16" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top"/>
         <ComboBox Name="userPesquisaContatoComboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="112,44,0,0" SelectionChanged="userPesquisaContatoComboBox_SelectionChanged" RenderTransformOrigin="0.442,0.409"/>
         <TextBox Name="textUserPesquisarContatos" FontSize="16" HorizontalAlignment="Left" Height="23" Margin="10,71,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="222"/>
-        <Button Content="Pesquisar" FontSize="16" HorizontalAlignment="Left" Margin="245,39,0,0" VerticalAlignment="Top" Width="74" Height="55"/>
+        <Button Content="Pesquisar" FontSize="16" HorizontalAlignment="Left" Margin="245,39,0,0" VerticalAlignment="Top" Width="74" Height="55" Click="Button_Click"/>
     </Grid>
 </Window>

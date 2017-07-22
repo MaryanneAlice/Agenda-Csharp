@@ -8,7 +8,7 @@
         Title="AdmWindow" Height="410" Width="410">
     <Grid>
         <Menu Height="25" VerticalAlignment="Top">
-            <MenuItem Header="Principal"></MenuItem>
+            <MenuItem Header="Atualizar"  Click="AtualizarClick"></MenuItem>
             <MenuItem Header="Adicionar" Click="AdicionarClick"></MenuItem>
             <MenuItem Header="Acessos" Click="AcessosClick"></MenuItem>
             <MenuItem Header="Sair" Click="SairClick"/>

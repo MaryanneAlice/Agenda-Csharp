@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-
+using System.Windows.Threading;
 
 namespace View
 {
@@ -15,18 +15,17 @@ namespace View
     {
         public AdmWindow()
         {
-            this.Loaded += MyWindow_Loaded;
             InitializeComponent();
+            updateGrid();
+        }
+        
+        public void updateGrid()
+        {
+           gridVisualizacaoAdm.ItemsSource = null;
+           gridVisualizacaoAdm.ItemsSource = negocioUsuario.Selecionar();
         }
 
         Business.Usuario negocioUsuario = new Business.Usuario();
-
-        private void MyWindow_Loaded(object sender, RoutedEventArgs e)
-        {
-            gridVisualizacaoAdm.ItemsSource = null;
-            gridVisualizacaoAdm.ItemsSource = negocioUsuario.Selecionar();
-        }
-
         AdicionarUsuarioWindow adicionarUser = new AdicionarUsuarioWindow();
         AcessosWindow acessosLog = new AcessosWindow();
 
@@ -37,12 +36,17 @@ namespace View
 
         private void AdicionarClick(object sender, RoutedEventArgs e)
         {
-            adicionarUser.ShowDialog();
+                adicionarUser.ShowDialog();           
         }
 
         private void SairClick(object sender, RoutedEventArgs e)
         {
-            Close();
+            Hide();
+        }
+
+        private void AtualizarClick(object sender, RoutedEventArgs e)
+        {
+           updateGrid();
         }
     }
 }
