@@ -1,0 +1,20 @@
+﻿<Window x:Class="View.AdmWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:View"
+        mc:Ignorable="d" 
+        Title="AdmWindow" Height="410" Width="410">
+    <Grid>
+        <Menu Height="25" VerticalAlignment="Top">
+            <MenuItem Header="Principal"></MenuItem>
+            <MenuItem Header="Adicionar" Click="AdicionarClick"></MenuItem>
+            <MenuItem Header="Acessos" Click="AcessosClick"></MenuItem>
+            <MenuItem Header="Sair" Click="SairClick"/>
+        </Menu>
+
+        <Label Content="Área do Administrador" FontSize="16" HorizontalAlignment="Left" Margin="113,41,0,0" VerticalAlignment="Top"/>
+        <DataGrid Name="gridVisualizacaoAdm" HorizontalAlignment="Left" Height="282" Margin="10,77,0,0" VerticalAlignment="Top" Width="372"/>
+    </Grid>
+</Window>
