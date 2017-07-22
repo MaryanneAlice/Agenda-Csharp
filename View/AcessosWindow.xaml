@@ -5,14 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="AcessosWindow" Height="450" Width="400">
+        Title="AcessosWindow" Height="480" Width="400">
+
     <Grid>
-        <Label Content="Consulta Log de Acessos" FontSize="16" HorizontalAlignment="Left" Margin="111,10,0,0" VerticalAlignment="Top"/>
-        <DataGrid HorizontalAlignment="Left" Height="278" VerticalAlignment="Top" Width="358" Margin="10,108,0,0"/>
-        <Label Content="Pesquisar" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="23,47,0,0"/>
-        <TextBox Name="textAcessosPesquisa" FontSize="14"  HorizontalAlignment="Left" Height="23" Margin="23,76,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="193" RenderTransformOrigin="0.532,-0.126"/>
-        <ComboBox Name="admAcessosComboBox"  FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="96,46,0,0" SelectionChanged="admAcessosComboBox_SelectionChanged"/>
-        <Button Content="Pesquisar" FontSize="16" HorizontalAlignment="Left" Margin="258,46,0,0" VerticalAlignment="Top" Width="92" Height="53" Click="Button_Click"/>
+
+        <Menu Height="25" VerticalAlignment="Top">
+            <MenuItem Header="Atualizar"  Click="AtualizarClick"></MenuItem>
+            <MenuItem Header="Sair" Click="SairClick"/>
+        </Menu>
+
+        <Label Content="Consulta Log de Acessos" FontSize="16" HorizontalAlignment="Left" Margin="114,39,0,0" VerticalAlignment="Top"/>
+        <DataGrid Name="gridAcessosAdm" HorizontalAlignment="Left" Height="278" VerticalAlignment="Top" Width="358" Margin="13,137,0,0"/>
+        <Label Content="Pesquisar" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="26,76,0,0"/>
+        <TextBox Name="textAcessosPesquisa" FontSize="14"  HorizontalAlignment="Left" Height="23" Margin="26,105,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="193" RenderTransformOrigin="0.532,-0.126"/>
+        <ComboBox Name="admAcessosComboBox"  FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="99,75,0,0"/>
+        <Button Content="Pesquisar" FontSize="16" HorizontalAlignment="Left" Margin="261,75,0,0" VerticalAlignment="Top" Width="92" Height="53" Click="PesquisarClick"/>
 
     </Grid>
 </Window>
