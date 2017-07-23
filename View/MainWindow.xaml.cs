@@ -32,7 +32,6 @@ namespace View
         {
             var idAcesso = 0;
 
-
                 string login = txtLogin.Text;
                 string senha = Persistence.Criptografar.MD5Hash(txtSenha.Password.ToString());
 
@@ -67,6 +66,7 @@ namespace View
                 }
             } catch (InvalidOperationException)
             {
+                MessageBox.Show("usuario nao cadastrado!");
             }
             
         }
