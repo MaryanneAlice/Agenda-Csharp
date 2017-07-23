@@ -5,16 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d" 
-        Title="AdmWindow" Height="410" Width="410">
+        Title="AdmWindow" Height="460" Width="410">
     <Grid>
         <Menu Height="25" VerticalAlignment="Top">
-            <MenuItem Header="Atualizar"  Click="AtualizarClick"></MenuItem>
+            <MenuItem Header="Atualizar DataGrid"  Click="AtualizarClick"></MenuItem>
             <MenuItem Header="Adicionar" Click="AdicionarClick"></MenuItem>
             <MenuItem Header="Acessos" Click="AcessosClick"></MenuItem>
             <MenuItem Header="Sair" Click="SairClick"/>
         </Menu>
 
-        <Label Content="Área do Administrador" FontSize="16" HorizontalAlignment="Left" Margin="113,41,0,0" VerticalAlignment="Top"/>
-        <DataGrid Name="gridVisualizacaoAdm" HorizontalAlignment="Left" Height="282" Margin="10,77,0,0" VerticalAlignment="Top" Width="372"/>
+        <Label Content="Área do Administrador" FontSize="16" HorizontalAlignment="Left" Margin="109,49,0,0" VerticalAlignment="Top"/>
+        <DataGrid Name="gridVisualizacaoAdm" HorizontalAlignment="Left" Height="282" Margin="10,131,0,0" VerticalAlignment="Top" Width="372"/>
+        <Button Content="Apagar Usuário" HorizontalAlignment="Left" Margin="10,106,0,0" VerticalAlignment="Top" Width="86" Click="ApagarUsuarioClick"/>
+        <Button Content="Editar Usuário" HorizontalAlignment="Left" Margin="304,106,0,0" VerticalAlignment="Top" Width="78" Click="EditarUsuarioClick"/>
     </Grid>
 </Window>

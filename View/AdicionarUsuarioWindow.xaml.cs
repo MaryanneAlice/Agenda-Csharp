@@ -116,6 +116,11 @@ namespace View
             }
             
         }
+
+        private void SairClick(object sender, RoutedEventArgs e)
+        {
+            Hide();
+        }
     }
 
 }

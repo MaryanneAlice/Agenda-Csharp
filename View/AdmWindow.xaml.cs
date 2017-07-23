@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Threading;
@@ -44,6 +46,7 @@ namespace View
         }
 
         Business.Usuario negocioUsuario = new Business.Usuario();
+        Model.Usuario modeloUsuario = new Model.Usuario();
         AdicionarUsuarioWindow adicionarUser = new AdicionarUsuarioWindow();
         AcessosWindow acessosLog = new AcessosWindow();
 
@@ -65,6 +68,25 @@ namespace View
         private void AtualizarClick(object sender, RoutedEventArgs e)
         {
            updateGrid();
+        }
+
+        private void ApagarUsuarioClick(object sender, RoutedEventArgs e)
+        {
+            modeloUsuario = gridVisualizacaoAdm.SelectedItem as Model.Usuario;
+
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Deseja realmente DELETAR esse usuário?", "Confirmação", System.Windows.MessageBoxButton.YesNo);
+
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                negocioUsuario.Deletar(modeloUsuario);
+            }
+
+            updateGrid();
+        }
+
+        private void EditarUsuarioClick(object sender, RoutedEventArgs e)
+        {
+            //editar user
         }
     }
 }

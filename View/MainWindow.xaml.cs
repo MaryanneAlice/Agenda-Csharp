@@ -15,23 +15,22 @@ namespace View
         public MainWindow()
         {
             InitializeComponent();
+            
         }
 
 
         Business.Usuario negocioUsuario = new Business.Usuario();
         Model.Usuario modeloUsuario = new Model.Usuario();
         Model.Acesso modeloAcesso = new Model.Acesso();
-        Business.Acessos negocioAcesso = new Business.Acessos();
-
-
+        Business.Acessos negocioAcesso = new Business.Acessos();  
 
         AdmWindow admJanela = new AdmWindow();
         UsuarioWindow userJanela = new UsuarioWindow();
 
         private void Entrar_Click(object sender, RoutedEventArgs e)
         {
-            var idAcesso = 0;
 
+            var idAcesso = 0;
 
                 string login = txtLogin.Text;
                 string senha = Persistence.Criptografar.MD5Hash(txtSenha.Password.ToString());
@@ -67,6 +66,7 @@ namespace View
                 }
             } catch (InvalidOperationException)
             {
+                MessageBox.Show("usuario nao cadastrado!");
             }
             
         }

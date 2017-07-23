@@ -49,7 +49,12 @@ namespace View
 
         private void Cancelar_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            Hide();
+        }
+
+        private void SairClick(object sender, RoutedEventArgs e)
+        {
+            Hide();
         }
     }
 }

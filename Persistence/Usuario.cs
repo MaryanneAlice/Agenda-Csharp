@@ -8,6 +8,7 @@ namespace Persistence
 {
     public class Usuario
     {
+        
         private string arquivo = "c:\\Users\\marya\\Desktop\\usuarios.json";
 
         public List<Model.Usuario> Selecionar()
