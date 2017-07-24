@@ -30,11 +30,8 @@ namespace View
         private void Entrar_Click(object sender, RoutedEventArgs e)
         {
 
-<<<<<<< HEAD
             var idAcesso = 0;
 
-=======
->>>>>>> e806ecca05aa826cd012a9f5d29a24c087f13f80
                 string login = txtLogin.Text;
                 string senha = Persistence.Criptografar.MD5Hash(txtSenha.Password.ToString());
 
@@ -67,11 +64,11 @@ namespace View
                     negocioAcesso.Inserir(modeloAcesso);
 
                 }
-            } catch (InvalidOperationException)
+            }
+            catch (InvalidOperationException)
             {
                 MessageBox.Show("usuario nao cadastrado!");
             }
-            
         }
     }
 }

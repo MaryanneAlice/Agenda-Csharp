@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Interop;
 using System.Windows.Threading;
 
@@ -21,7 +22,22 @@ namespace View
         {
             InitializeComponent();
             updateGrid();
+            InitializeWindow();
+
             this.Loaded += new RoutedEventHandler(Window_Loaded);
+        }
+
+        public void InitializeWindow()
+        {
+            admLoginLabelEditar.Visibility = System.Windows.Visibility.Collapsed;
+            admSenhaLabelEditar.Visibility = System.Windows.Visibility.Collapsed;
+            admAddLabelEditar.Visibility = System.Windows.Visibility.Collapsed;
+            textLoginEditar.Visibility = System.Windows.Visibility.Collapsed;
+            textSenhaEditar.Visibility = System.Windows.Visibility.Collapsed;
+            admUserComboBoxEditar.Visibility = System.Windows.Visibility.Collapsed;
+            btn_Atualizar.Visibility = System.Windows.Visibility.Collapsed;
+            btn_Fechar.Visibility = System.Windows.Visibility.Collapsed;
+            gridVisualizacaoAdm.Margin = new Thickness(20, 20, 20, 20);
         }
 
         private const int GWL_STYLE = -16;
@@ -43,12 +59,15 @@ namespace View
         {
            gridVisualizacaoAdm.ItemsSource = null;
            gridVisualizacaoAdm.ItemsSource = negocioUsuario.Selecionar();
+           DataContext = this;
         }
 
         Business.Usuario negocioUsuario = new Business.Usuario();
         Model.Usuario modeloUsuario = new Model.Usuario();
         AdicionarUsuarioWindow adicionarUser = new AdicionarUsuarioWindow();
         AcessosWindow acessosLog = new AcessosWindow();
+
+
 
         private void AcessosClick(object sender, RoutedEventArgs e)
         {
@@ -86,7 +105,34 @@ namespace View
 
         private void EditarUsuarioClick(object sender, RoutedEventArgs e)
         {
-            //editar user
+            /*
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Deseja realmente EDITAR esse usuário?", 
+               "Confirmação", System.Windows.MessageBoxButton.YesNo);
+
+            modeloUsuario = gridVisualizacaoAdm.SelectedItem as Model.Usuario;
+            int idUser = modeloUsuario.Id;
+            */
+
+            admLoginLabelEditar.Visibility = System.Windows.Visibility.Visible;
+            admSenhaLabelEditar.Visibility = System.Windows.Visibility.Visible;
+            admAddLabelEditar.Visibility = System.Windows.Visibility.Visible;
+            textLoginEditar.Visibility = System.Windows.Visibility.Visible;
+            textSenhaEditar.Visibility = System.Windows.Visibility.Visible;
+            admUserComboBoxEditar.Visibility = System.Windows.Visibility.Visible;
+            btn_Atualizar.Visibility = System.Windows.Visibility.Visible;
+            btn_Fechar.Visibility = System.Windows.Visibility.Visible;
+            gridVisualizacaoAdm.Margin = new Thickness(20, 20, 20, 20);
+
+        }
+
+        private void AtualizarUsuario_Click(object sender, RoutedEventArgs e)
+        {
+            // atualizar
+        }
+
+        private void Fechar_Click(object sender, RoutedEventArgs e)
+        {
+            // fechar
         }
     }
 }
