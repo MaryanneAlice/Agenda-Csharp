@@ -22,6 +22,7 @@ namespace View
         {
             InitializeComponent();
             updateGrid();
+            addComboBOX();
             InitializeWindow();
 
             this.Loaded += new RoutedEventHandler(Window_Loaded);
@@ -68,6 +69,13 @@ namespace View
         AcessosWindow acessosLog = new AcessosWindow();
 
 
+        public void addComboBOX()
+        {
+            admUserComboBoxEditar.Items.Add("Escolher");
+            admUserComboBoxEditar.Items.Add(true);
+            admUserComboBoxEditar.Items.Add(false);
+            admUserComboBoxEditar.SelectedItem = "Escolher";
+        }
 
         private void AcessosClick(object sender, RoutedEventArgs e)
         {
@@ -105,13 +113,7 @@ namespace View
 
         private void EditarUsuarioClick(object sender, RoutedEventArgs e)
         {
-            /*
-            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Deseja realmente EDITAR esse usuário?", 
-               "Confirmação", System.Windows.MessageBoxButton.YesNo);
-
-            modeloUsuario = gridVisualizacaoAdm.SelectedItem as Model.Usuario;
-            int idUser = modeloUsuario.Id;
-            */
+            
 
             admLoginLabelEditar.Visibility = System.Windows.Visibility.Visible;
             admSenhaLabelEditar.Visibility = System.Windows.Visibility.Visible;
@@ -121,18 +123,60 @@ namespace View
             admUserComboBoxEditar.Visibility = System.Windows.Visibility.Visible;
             btn_Atualizar.Visibility = System.Windows.Visibility.Visible;
             btn_Fechar.Visibility = System.Windows.Visibility.Visible;
-            gridVisualizacaoAdm.Margin = new Thickness(20, 20, 20, 20);
+            gridVisualizacaoAdm.Margin = new Thickness(-360, 120, 0, 0);
 
         }
 
         private void AtualizarUsuario_Click(object sender, RoutedEventArgs e)
         {
             // atualizar
+            try
+            { 
+                modeloUsuario = gridVisualizacaoAdm.SelectedItem as Model.Usuario;
+                int idUser = modeloUsuario.Id;
+                modeloUsuario.Login = textLoginEditar.Text;
+                modeloUsuario.Senha = textSenhaEditar.Text;
+                var opcao = admUserComboBoxEditar.Text;
+                modeloUsuario.Admin = Boolean.Parse(opcao);
+
+                negocioUsuario.Atualizar(modeloUsuario);
+
+                MessageBox.Show("Usuario atualizado com sucesso!");
+            }
+            catch (ArgumentNullException)
+            {
+                MessageBox.Show("Dados nao informados!");
+            }
+            catch (InvalidOperationException)
+            {
+                MessageBox.Show("Usuario ja cadastrado!");
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("o usuario necessita ter status (verdadeiro ou falso) de administrador!!! ");
+            }
+            finally
+            {
+                updateGrid();
+                InitializeWindow();
+            }
+
         }
 
         private void Fechar_Click(object sender, RoutedEventArgs e)
         {
-            // fechar
+            InitializeWindow();
+        }
+
+        private void gridVisualizacaoAdm_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (gridVisualizacaoAdm.SelectedItem != null)
+            {
+
+                Model.Usuario u = (Model.Usuario)gridVisualizacaoAdm.SelectedItem;
+                textLoginEditar.Text = u.Login;
+
+            }
         }
     }
 }
