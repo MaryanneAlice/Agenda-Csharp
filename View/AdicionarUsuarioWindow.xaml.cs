@@ -81,9 +81,7 @@ namespace View
 
         private void Canccelar_Click(object sender, RoutedEventArgs e)
         {
-    
-            Hide();
-            
+            Hide();            
         }
 
         private void Adicionar_Click(object sender, RoutedEventArgs e)
@@ -99,7 +97,7 @@ namespace View
                 modeloUsuario.Admin = Boolean.Parse(opcao);
                 negocioUsuario.Inserir(modeloUsuario);
 
-                MessageBox.Show("Salvo com sucesso!");
+                MessageBox.Show("Usuario salvo com sucesso!");
 
             }
             catch (ArgumentNullException)
@@ -116,6 +114,7 @@ namespace View
             }
             
         }
+
 
         private void SairClick(object sender, RoutedEventArgs e)
         {

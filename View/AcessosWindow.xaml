@@ -16,10 +16,9 @@
 
         <Label Content="Consulta Log de Acessos" FontSize="16" HorizontalAlignment="Left" Margin="114,39,0,0" VerticalAlignment="Top"/>
         <DataGrid Name="gridAcessosAdm" HorizontalAlignment="Left" Height="278" VerticalAlignment="Top" Width="358" Margin="13,137,0,0"/>
-        <Label Content="Pesquisar" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="26,76,0,0"/>
-        <TextBox Name="textAcessosPesquisa" FontSize="14"  HorizontalAlignment="Left" Height="23" Margin="26,105,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="193" RenderTransformOrigin="0.532,-0.126"/>
-        <ComboBox Name="admAcessosComboBox"  FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="99,75,0,0"/>
-        <Button Content="Pesquisar" FontSize="16" HorizontalAlignment="Left" Margin="261,75,0,0" VerticalAlignment="Top" Width="92" Height="53" Click="PesquisarClick"/>
+        <Label Content="Informar periodo (aaaa-mm-dd)" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="26,76,0,0"/>
+        <TextBox Name="textData" FontSize="14"  HorizontalAlignment="Left" Height="23" Margin="26,105,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="208" RenderTransformOrigin="0.532,-0.126"/>
+        <Button Content="Consultar" FontSize="16" HorizontalAlignment="Left" Margin="261,75,0,0" VerticalAlignment="Top" Width="92" Height="53" Click="Consultar_Click"/>
 
     </Grid>
 </Window>

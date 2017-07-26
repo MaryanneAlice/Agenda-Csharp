@@ -11,26 +11,25 @@ namespace View
     /// </summary>
     public partial class MainWindow : Window
     {
-
         public MainWindow()
         {
             InitializeComponent();
-            
         }
 
 
         Business.Usuario negocioUsuario = new Business.Usuario();
         Model.Usuario modeloUsuario = new Model.Usuario();
         Model.Acesso modeloAcesso = new Model.Acesso();
-        Business.Acessos negocioAcesso = new Business.Acessos();  
-
+        Business.Acessos negocioAcesso = new Business.Acessos();
+        Business.Contato negocioContato = new Business.Contato();
+        
         AdmWindow admJanela = new AdmWindow();
         UsuarioWindow userJanela = new UsuarioWindow();
 
         private void Entrar_Click(object sender, RoutedEventArgs e)
         {
 
-            var idAcesso = 0;
+            int idAcesso;
 
                 string login = txtLogin.Text;
                 string senha = Persistence.Criptografar.MD5Hash(txtSenha.Password.ToString());
@@ -43,32 +42,30 @@ namespace View
                 idAcesso = negocioAcesso.Selecionar().OrderBy(a => a.Id).OrderByDescending(x => x.Id).Take(1).Single().Id;
             } catch (InvalidOperationException)
             {
-                idAcesso = 1;
+                idAcesso = 0;
             }
                 modeloUsuario.Login = login;
                 modeloUsuario.Senha = senha;
 
-            try
-            {
+
                 if (adminStatus == true)
                 {
                     admJanela.ShowDialog();
                 }
                 else if (adminStatus == false)
                 {
+
                     userJanela.ShowDialog();
 
-                    modeloAcesso.Id = idAcesso;
-                    modeloAcesso.IdUsuario = modeloUsuario.Id;
+                    modeloAcesso.Id = idAcesso + 1;
+                    modeloAcesso.IdUsuario = idUser;
                     modeloAcesso.Data = DateTime.Now;
                     negocioAcesso.Inserir(modeloAcesso);
-
+                        
                 }
-            }
-            catch (InvalidOperationException)
-            {
+                else { 
                 MessageBox.Show("usuario nao cadastrado!");
-            }
+                }
         }
     }
 }

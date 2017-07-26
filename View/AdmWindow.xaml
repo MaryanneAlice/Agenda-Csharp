@@ -30,8 +30,7 @@
                 <Button Name="btn_Atualizar" Content="Atualizar" FontSize="14" HorizontalAlignment="Left" Margin="-320,80,0,0" VerticalAlignment="Top" Width="100" Click="AtualizarUsuario_Click" Height="22"/>
                 <Button Name="btn_Fechar" Content="Cancelar" FontSize="14" HorizontalAlignment="Left" Margin="-150,80,0,0" VerticalAlignment="Top" Width="100" Click="Fechar_Click" Height="22"/>
 
-                    <DataGrid Name="gridVisualizacaoAdm" HorizontalAlignment="Left" Height="300" Margin="-360,120,0,0" VerticalAlignment="Top" Width="362" SelectionChanged="gridVisualizacaoAdm_SelectionChanged"/>
-
+                <DataGrid Name="gridVisualizacaoAdm" HorizontalAlignment="Left" Height="300" Margin="-360,120,0,0" VerticalAlignment="Top" Width="362" MinColumnWidth="110" SelectionChanged="gridVisualizacaoAdm_SelectionChanged" />
 
             </DockPanel>
         </Border>

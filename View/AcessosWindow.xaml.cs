@@ -24,10 +24,8 @@ namespace View
         public AcessosWindow()
         {
             InitializeComponent();
-            addComboBOX();            
-            updateGrid();
-
             this.Loaded += new RoutedEventHandler(Window_Loaded);
+            updateGrid();
         }
 
         private const int GWL_STYLE = -16;
@@ -47,14 +45,6 @@ namespace View
 
         Business.Acessos negocioAcessos = new Business.Acessos();
 
-        public void addComboBOX()
-        {
-            admAcessosComboBox.Items.Add("Escolher");
-            admAcessosComboBox.Items.Add("Id");
-            admAcessosComboBox.Items.Add("Nome");
-            admAcessosComboBox.SelectedItem = "Escolher";
-        }
-
         public void updateGrid()
         {
             gridAcessosAdm.ItemsSource = null;
@@ -71,9 +61,11 @@ namespace View
             updateGrid();
         }
 
-        private void PesquisarClick(object sender, RoutedEventArgs e)
+        private void Consultar_Click(object sender, RoutedEventArgs e)
         {
-            // pesquisar
+            DateTime dataLog = DateTime.Parse(textData.Text);
+            var users = negocioAcessos.Selecionar().Where(person => person.Data == dataLog).ToList();
+            updateGrid();
         }
     }
 }

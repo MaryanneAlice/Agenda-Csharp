@@ -1,0 +1,11 @@
+C:\Users\marya\Documents\Visual Studio 2017\Projects\agenda-Csharp\Business\bin\Debug\Business.dll
+C:\Users\marya\Documents\Visual Studio 2017\Projects\agenda-Csharp\Business\bin\Debug\Business.pdb
+C:\Users\marya\Documents\Visual Studio 2017\Projects\agenda-Csharp\Business\bin\Debug\Model.dll
+C:\Users\marya\Documents\Visual Studio 2017\Projects\agenda-Csharp\Business\bin\Debug\Persistence.dll
+C:\Users\marya\Documents\Visual Studio 2017\Projects\agenda-Csharp\Business\bin\Debug\Newtonsoft.Json.dll
+C:\Users\marya\Documents\Visual Studio 2017\Projects\agenda-Csharp\Business\bin\Debug\Model.pdb
+C:\Users\marya\Documents\Visual Studio 2017\Projects\agenda-Csharp\Business\bin\Debug\Persistence.pdb
+C:\Users\marya\Documents\Visual Studio 2017\Projects\agenda-Csharp\Business\bin\Debug\Newtonsoft.Json.xml
+C:\Users\marya\Documents\Visual Studio 2017\Projects\agenda-Csharp\Business\obj\Debug\Business.csprojResolveAssemblyReference.cache
+C:\Users\marya\Documents\Visual Studio 2017\Projects\agenda-Csharp\Business\obj\Debug\Business.dll
+C:\Users\marya\Documents\Visual Studio 2017\Projects\agenda-Csharp\Business\obj\Debug\Business.pdb

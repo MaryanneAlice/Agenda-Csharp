@@ -14,11 +14,11 @@
 
         <Label Content="Adicionar Contato" FontSize="16" HorizontalAlignment="Left" Margin="74,45,0,0" VerticalAlignment="Top"/>
         <Label Content="Nome: " FontSize="16" HorizontalAlignment="Left" Margin="27,95,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="textAdicionarContatoNome" FontSize="16"  HorizontalAlignment="Left"  Height="24" Margin="107,99,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="textNomeEditar" FontSize="16"  HorizontalAlignment="Left"  Height="24" Margin="107,99,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Label Content="Telefone: " FontSize="16" HorizontalAlignment="Left" Margin="27,143,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="textAdicionarContatoTelefone" FontSize="16"  HorizontalAlignment="Left"  Height="24" Margin="107,147,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="textTelefoneEditar" FontSize="16"  HorizontalAlignment="Left"  Height="24" Margin="107,147,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Label Content="E-mail: " FontSize="16" HorizontalAlignment="Left" Margin="27,196,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="textAdicionarContatoEmail" FontSize="16"  HorizontalAlignment="Left"  Height="24" Margin="107,200,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="textEmailEditar" FontSize="16"  HorizontalAlignment="Left"  Height="24" Margin="107,200,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Button Content="Salvar" FontSize="16" HorizontalAlignment="Left" Margin="16,252,0,0" VerticalAlignment="Top" Width="126" Click="Salvar_Click"/>
         <Button Content="Cancelar" FontSize="16" HorizontalAlignment="Left" Margin="142,252,0,0" VerticalAlignment="Top" Width="126" Click="Cancelar_Click"/>
 

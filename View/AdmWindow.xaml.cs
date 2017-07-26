@@ -59,8 +59,7 @@ namespace View
         public void updateGrid()
         {
            gridVisualizacaoAdm.ItemsSource = null;
-           gridVisualizacaoAdm.ItemsSource = negocioUsuario.Selecionar();
-           DataContext = this;
+           gridVisualizacaoAdm.ItemsSource = negocioUsuario.Selecionar().OrderBy(person => person.Id);
         }
 
         Business.Usuario negocioUsuario = new Business.Usuario();
@@ -113,8 +112,6 @@ namespace View
 
         private void EditarUsuarioClick(object sender, RoutedEventArgs e)
         {
-            
-
             admLoginLabelEditar.Visibility = System.Windows.Visibility.Visible;
             admSenhaLabelEditar.Visibility = System.Windows.Visibility.Visible;
             admAddLabelEditar.Visibility = System.Windows.Visibility.Visible;
@@ -129,7 +126,6 @@ namespace View
 
         private void AtualizarUsuario_Click(object sender, RoutedEventArgs e)
         {
-            // atualizar
             try
             { 
                 modeloUsuario = gridVisualizacaoAdm.SelectedItem as Model.Usuario;
@@ -146,10 +142,6 @@ namespace View
             catch (ArgumentNullException)
             {
                 MessageBox.Show("Dados nao informados!");
-            }
-            catch (InvalidOperationException)
-            {
-                MessageBox.Show("Usuario ja cadastrado!");
             }
             catch (FormatException)
             {
@@ -172,11 +164,10 @@ namespace View
         {
             if (gridVisualizacaoAdm.SelectedItem != null)
             {
-
                 Model.Usuario u = (Model.Usuario)gridVisualizacaoAdm.SelectedItem;
                 textLoginEditar.Text = u.Login;
-
             }
         }
+
     }
 }

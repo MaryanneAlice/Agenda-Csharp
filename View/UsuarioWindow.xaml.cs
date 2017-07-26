@@ -24,8 +24,9 @@ namespace View
         public UsuarioWindow()
         {
             InitializeComponent();
-
             optionsComboBOX();
+            updateGrid();
+            InitializeWindow();
 
             this.Loaded += new RoutedEventHandler(Window_Loaded);
         }
@@ -45,6 +46,8 @@ namespace View
             SetWindowLong(hwnd, GWL_STYLE, GetWindowLong(hwnd, GWL_STYLE) & ~WS_SYSMENU);
         }
 
+        
+
         private void optionsComboBOX()
         {
             userPesquisaContatoComboBox.Items.Add("Escolher");
@@ -54,14 +57,40 @@ namespace View
             userPesquisaContatoComboBox.SelectedItem = "Escolher";
         }
 
+        Business.Contato negocioContato = new Business.Contato();
+        Model.Contato modeloContato = new Model.Contato();
+
+        AdicionarContatoWindow addContatoJanela = new AdicionarContatoWindow();
+
+        public void InitializeWindow()
+        {
+            userNomeEditar.Visibility = System.Windows.Visibility.Collapsed;
+            textuserNomeEditar.Visibility = System.Windows.Visibility.Collapsed;
+            userTelefoneEditar.Visibility = System.Windows.Visibility.Collapsed;
+            textuserTelefoneEditar.Visibility = System.Windows.Visibility.Collapsed;
+            userEmailEditar.Visibility = System.Windows.Visibility.Collapsed;
+            textuserEmailEditar.Visibility = System.Windows.Visibility.Collapsed;
+            btn_Atualizar.Visibility = System.Windows.Visibility.Collapsed;
+            btn_Fechar.Visibility = System.Windows.Visibility.Collapsed;
+            gridVisualizarContatos.Margin = new Thickness(20, 20, 20, 20);
+        }
+
+        public void updateGrid()
+        {
+            gridVisualizarContatos.ItemsSource = null;
+            gridVisualizarContatos.ItemsSource = negocioContato.Selecionar().OrderBy(person => person.Nome);
+
+
+        }
+
         private void SairClick(object sender, RoutedEventArgs e)
         {
-            Close();
+            Hide();
         }
 
         private void addContatoClick(object sender, RoutedEventArgs e)
         {
-            // adicionar
+            addContatoJanela.ShowDialog();
         }
 
         private void userPesquisaContatoComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -69,9 +98,109 @@ namespace View
             // comboBox userPesquisaContato
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+
+        private void ApagarUsuarioClick(object sender, RoutedEventArgs e)
         {
-            // pesquisar contato
+            modeloContato = gridVisualizarContatos.SelectedItem as Model.Contato;
+
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Deseja realmente DELETAR esse usuário?", "Confirmação", System.Windows.MessageBoxButton.YesNo);
+
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                negocioContato.Deletar(modeloContato);
+            }
+
+            updateGrid();
+        }
+
+        private void EditarUsuarioClick(object sender, RoutedEventArgs e)
+        {
+            userNomeEditar.Visibility = System.Windows.Visibility.Visible;
+            textuserNomeEditar.Visibility = System.Windows.Visibility.Visible;
+            userTelefoneEditar.Visibility = System.Windows.Visibility.Visible;
+            textuserTelefoneEditar.Visibility = System.Windows.Visibility.Visible;
+            userEmailEditar.Visibility = System.Windows.Visibility.Visible;
+            textuserEmailEditar.Visibility = System.Windows.Visibility.Visible;
+            btn_Atualizar.Visibility = System.Windows.Visibility.Visible;
+            btn_Fechar.Visibility = System.Windows.Visibility.Visible;
+            gridVisualizarContatos.Margin = new Thickness(-380, 120, 0, 0);
+        }
+
+        private void AtualizarContato_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                modeloContato = gridVisualizarContatos.SelectedItem as Model.Contato;
+                int idContato = modeloContato.Id;
+                modeloContato.Nome = textuserNomeEditar.Text;
+                modeloContato.Telefone = textuserTelefoneEditar.Text;
+                modeloContato.Email = textuserEmailEditar.Text;
+
+                negocioContato.Atualizar(modeloContato);
+
+                MessageBox.Show("Contato atualizado com sucesso!");
+            }
+            catch (ArgumentNullException)
+            {
+                MessageBox.Show("Dados nao informados!");
+            }
+            finally
+            {
+                updateGrid();
+                InitializeWindow();
+            }
+        }
+
+        private void Fechar_Click(object sender, RoutedEventArgs e)
+        {
+            InitializeWindow();
+        }
+
+        private void gridVisualizarContatos_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (gridVisualizarContatos.SelectedItem != null)
+            {
+                Model.Contato c = (Model.Contato)gridVisualizarContatos.SelectedItem;
+                textuserNomeEditar.Text = c.Nome;
+            }
+        }
+
+        private void Pesquisar_Click(object sender, RoutedEventArgs e)
+        {
+
+            string opcao = userPesquisaContatoComboBox.Text;
+            string dado = textUserPesquisarContatos.Text;
+
+            if (opcao == "Nome")
+            {
+                var users = negocioContato.Selecionar().Where(person => person.Nome == dado).ToList();
+                updateGrid();
+            }
+            else if (opcao == "E-mail")
+            {
+                var users = negocioContato.Selecionar().Where(person => person.Email == dado).ToList();
+                updateGrid();
+            }
+            else if (opcao == "Telefone")
+            {
+                var users = negocioContato.Selecionar().Where(person => person.Telefone == dado).ToList();
+                updateGrid();
+            }
+
+        }
+
+        private void AtualizarClick(object sender, RoutedEventArgs e)
+        {
+            updateGrid();
+        }
+
+
+        private void gridVisualizarContatos_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.PropertyName == "Id")
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

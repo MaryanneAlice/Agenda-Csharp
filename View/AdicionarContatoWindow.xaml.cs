@@ -25,6 +25,7 @@ namespace View
         {
             InitializeComponent();
             this.Loaded += new RoutedEventHandler(Window_Loaded);
+
         }
 
         private const int GWL_STYLE = -16;
@@ -42,9 +43,36 @@ namespace View
             SetWindowLong(hwnd, GWL_STYLE, GetWindowLong(hwnd, GWL_STYLE) & ~WS_SYSMENU);
         }
 
+        Model.Usuario modeloUsuario = new Model.Usuario();
+        Model.Contato modeloContato = new Model.Contato();
+        Business.Contato negocioContato = new Business.Contato();
+        
+
         private void Salvar_Click(object sender, RoutedEventArgs e)
-        {
-            // adicionar contato
+        {   
+            var IDultimo = 0;
+            try
+            {
+                IDultimo = negocioContato.Selecionar().OrderBy(a => a.Id).OrderByDescending(x => x.Id).Take(1).Single().Id;
+            }
+            catch (InvalidOperationException)
+            {
+                IDultimo = 0;
+            }
+
+            try
+            {
+                modeloContato.Id = IDultimo + 1;
+                modeloContato.Nome = textNomeEditar.Text;
+                modeloContato.Telefone = textTelefoneEditar.Text;
+                modeloContato.Email = textEmailEditar.Text;
+                negocioContato.Inserir(modeloContato);
+                MessageBox.Show("Contato salvo com sucesso!");
+            }
+            catch (ArgumentNullException)
+            {
+                MessageBox.Show("Dados nao informados!");
+            }
         }
 
         private void Cancelar_Click(object sender, RoutedEventArgs e)

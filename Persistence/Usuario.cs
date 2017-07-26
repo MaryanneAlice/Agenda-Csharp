@@ -19,9 +19,9 @@ namespace Persistence
         {
             ArquivoJson<Model.Usuario>.Inserir(arquivo, u);
         }
-        public void Atualizar(Model.Usuario v)
+        public void Atualizar(Model.Usuario u)
         {
-            ArquivoJson<Model.Usuario>.Atualizar(arquivo, v);
+            ArquivoJson<Model.Usuario>.Atualizar(arquivo, u);
         }
         public void Deletar(Model.Usuario u)
         {

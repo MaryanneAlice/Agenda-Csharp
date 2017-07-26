@@ -5,17 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="UsuarioWindow" Height="450" Width="350">
+        Title="UsuarioWindow" Height="610" Width="430">
     <Grid>
         <Menu Height="25" VerticalAlignment="Top">
-            <MenuItem Header="Principal"></MenuItem>
+            <MenuItem Header="Atualizar DataGrid"  Click="AtualizarClick"></MenuItem>
             <MenuItem Header="Adicionar" Click="addContatoClick"></MenuItem>
             <MenuItem Header="Sair" Click="SairClick"/>
         </Menu>
-        <DataGrid HorizontalAlignment="Left" Height="285" VerticalAlignment="Top" Width="309" Margin="10,111,0,0"/>
         <Label Content="Perquise por:" FontSize="16" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top"/>
+        <Button Content="Apagar Usuário" FontSize="16"  HorizontalAlignment="Left" Margin="10,106,0,0" VerticalAlignment="Top" Width="125" Click="ApagarUsuarioClick"/>
+        <Button Content="Editar Usuário" FontSize="16"  HorizontalAlignment="Left" Margin="268,106,0,0" VerticalAlignment="Top" Width="114" Click="EditarUsuarioClick"/>
         <ComboBox Name="userPesquisaContatoComboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="112,44,0,0" SelectionChanged="userPesquisaContatoComboBox_SelectionChanged" RenderTransformOrigin="0.442,0.409"/>
         <TextBox Name="textUserPesquisarContatos" FontSize="16" HorizontalAlignment="Left" Height="23" Margin="10,71,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="222"/>
-        <Button Content="Pesquisar" FontSize="16" HorizontalAlignment="Left" Margin="245,39,0,0" VerticalAlignment="Top" Width="74" Height="55" Click="Button_Click"/>
+        <Button Content="Pesquisar" FontSize="16" HorizontalAlignment="Left" Margin="245,44,0,0" VerticalAlignment="Top" Width="137" Height="24" Click="Pesquisar_Click"/>
+
+        <Border BorderThickness="2" Background="White" Margin="0,131,20,10">
+            <DockPanel>
+
+                <Label Name="userNomeEditar"  Content="Nome: " FontSize="14" HorizontalAlignment="Left" Margin="4,1,0,0" VerticalAlignment="Top" Height="30"/>
+                <TextBox Name="textuserNomeEditar" FontSize="16"  HorizontalAlignment="Left"  Height="27" Margin="-49,30,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+
+                <Label  Name="userTelefoneEditar"  Content="  Telefone: " FontSize="14" HorizontalAlignment="Left" Margin="0,1,0,0" VerticalAlignment="Top" Height="29" Width="64"/>
+                <TextBox Name="textuserTelefoneEditar" FontSize="16"  HorizontalAlignment="Left"  Height="27" Margin="-55,30,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+
+                <Label Name="userEmailEditar" Content="  E-mail: " FontSize="14" HorizontalAlignment="Left" Margin="1,1,0,0" VerticalAlignment="Top" Height="36"/>
+                <TextBox Name="textuserEmailEditar" FontSize="16"  HorizontalAlignment="Left"  Height="27" Margin="-55,30,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+
+                <Button Name="btn_Atualizar" Content="Atualizar" FontSize="14" HorizontalAlignment="Left" Margin="-320,80,0,0" VerticalAlignment="Top" Width="100" Click="AtualizarContato_Click" Height="22"/>
+                <Button Name="btn_Fechar" Content="Cancelar" FontSize="14" HorizontalAlignment="Left" Margin="-150,80,0,0" VerticalAlignment="Top" Width="100" Click="Fechar_Click" Height="22"/>
+
+                <DataGrid Name="gridVisualizarContatos" HorizontalAlignment="Left" Height="300" Margin="-370,120,0,0" VerticalAlignment="Top" Width="362" MinColumnWidth="110" SelectionChanged="gridVisualizarContatos_SelectionChanged" AutoGenerateColumns="True" AutoGeneratingColumn="gridVisualizarContatos_AutoGeneratingColumn" />
+
+            </DockPanel>
+        </Border>
+
     </Grid>
 </Window>
