@@ -8,7 +8,7 @@ using System.IO;
 
 namespace Persistence
 {
-    public class ArquivoJson<T> where T : Model.IId
+    public class ArquivoJsonContato<T> where T : Model.IId
     {
         public static List<T> AbrirJson(string arquivo)
         {

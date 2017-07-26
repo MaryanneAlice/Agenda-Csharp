@@ -55,12 +55,12 @@ namespace View
                 else if (adminStatus == false)
                 {
 
-                    userJanela.ShowDialog();
-
                     modeloAcesso.Id = idAcesso + 1;
                     modeloAcesso.IdUsuario = idUser;
                     modeloAcesso.Data = DateTime.Now;
                     negocioAcesso.Inserir(modeloAcesso);
+
+                    userJanela.ShowDialog();    
                         
                 }
                 else { 

@@ -46,14 +46,18 @@ namespace View
         Model.Usuario modeloUsuario = new Model.Usuario();
         Model.Contato modeloContato = new Model.Contato();
         Business.Contato negocioContato = new Business.Contato();
-        
+        Business.Acessos negocioAcessos = new Business.Acessos();
+        Business.Usuario negocioUsuario = new Business.Usuario();
 
         private void Salvar_Click(object sender, RoutedEventArgs e)
-        {   
+        {            
             var IDultimo = 0;
             try
             {
-                IDultimo = negocioContato.Selecionar().OrderBy(a => a.Id).OrderByDescending(x => x.Id).Take(1).Single().Id;
+                int idUser = negocioAcessos.Selecionar().OrderBy(user => user.Data).OrderBy(x => x.Data).Take(1).Single().IdUsuario;
+                string nomeUser = negocioUsuario.Selecionar().Where(person => person.Id == idUser).Single().Login;
+
+                IDultimo = negocioContato.Selecionar(nomeUser).OrderBy(a => a.Id).OrderByDescending(x => x.Id).Take(1).Single().Id;
             }
             catch (InvalidOperationException)
             {
@@ -66,7 +70,14 @@ namespace View
                 modeloContato.Nome = textNomeEditar.Text;
                 modeloContato.Telefone = textTelefoneEditar.Text;
                 modeloContato.Email = textEmailEditar.Text;
-                negocioContato.Inserir(modeloContato);
+
+                // ultimo ser registrado no acesso
+
+                int idUser = negocioAcessos.Selecionar().OrderBy(user => user.Data).OrderBy(x => x.Data).Take(1).Single().IdUsuario;
+                string nomeUser = negocioUsuario.Selecionar().Where(person => person.Id == idUser).Single().Login;
+
+                MessageBox.Show(nomeUser);
+                negocioContato.Inserir(modeloContato, nomeUser);
                 MessageBox.Show("Contato salvo com sucesso!");
             }
             catch (ArgumentNullException)

@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Acesso.cs" />
     <Compile Include="ArquivoJson.cs" />
+    <Compile Include="ArquivoJsonContato.cs" />
     <Compile Include="Contato.cs" />
     <Compile Include="Criptografar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

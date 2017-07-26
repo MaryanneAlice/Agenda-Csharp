@@ -9,27 +9,30 @@ namespace Persistence
     public class Contato
     {
 
-        private string arquivo = "c:\\Users\\marya\\Desktop\\contatos.json";
-
-
-        public List<Model.Contato> Selecionar()
+        public List<Model.Contato> Selecionar(string nomeUser)
         {
-            return ArquivoJson<Model.Contato>.Selecionar(arquivo);
+            string arquivo = "c:\\Users\\marya\\Desktop\\"+nomeUser+"contatos.json";
+            return ArquivoJsonContato<Model.Contato>.Selecionar(arquivo);
         }
 
-        public void Inserir(Model.Contato c)
+        public void Inserir(Model.Contato c, string nomeUser)
         {
-            ArquivoJson<Model.Contato>.Inserir(arquivo, c);
+            string arquivo = "c:\\Users\\marya\\Desktop\\"+nomeUser+"contatos.json";
+            ArquivoJsonContato<Model.Contato>.Inserir(arquivo, c);
         }
 
-        public void Atualizar(Model.Contato c)
+        public void Atualizar(Model.Contato c, string nomeUser)
         {
-            ArquivoJson<Model.Contato>.Atualizar(arquivo, c);
+            string arquivo = "c:\\Users\\marya\\Desktop\\"+nomeUser+"contatos.json";
+            ArquivoJsonContato<Model.Contato>.Atualizar(arquivo, c);
         }
 
-        public void Deletar(Model.Contato c)
+        public void Deletar(Model.Contato c, string nomeUser)
         {
-            ArquivoJson<Model.Contato>.Deletar(arquivo, c);
+            string arquivo = "c:\\Users\\marya\\Desktop\\" + nomeUser + "contatos.json";
+            ArquivoJsonContato<Model.Contato>.Deletar(arquivo, c);
         }
+        
+        
     }
 }

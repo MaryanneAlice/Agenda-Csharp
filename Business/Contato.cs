@@ -7,31 +7,32 @@ using System.Windows.Forms;
 
 namespace Business
 {
-    public class Contato : Model.Usuario
+    public class Contato
     {
         private Persistence.Contato p = new Persistence.Contato();
-              
-        public List<Model.Contato> Selecionar()
+
+
+        public List<Model.Contato> Selecionar(string nomeUser)
         {
-            return p.Selecionar();
+            return p.Selecionar(nomeUser);
         }
 
-        public void Inserir(Model.Contato c)
+        public void Inserir(Model.Contato c, string nomeUser)
         {
             // Valida o novo usuario
             if (c == null)
                 throw new ArgumentNullException("Dados nao informados!");            
-            p.Inserir(c);
+            p.Inserir(c, nomeUser);
         }
 
-        public void Atualizar(Model.Contato c)
+        public void Atualizar(Model.Contato c, string nomeUser)
         {
-            p.Atualizar(c);
+            p.Atualizar(c, nomeUser);
         }
 
-        public void Deletar(Model.Contato c)
+        public void Deletar(Model.Contato c, string nomeUser)
         {
-            p.Deletar(c);
+            p.Deletar(c, nomeUser);
         }
     }
 }

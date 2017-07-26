@@ -59,6 +59,10 @@ namespace View
 
         Business.Contato negocioContato = new Business.Contato();
         Model.Contato modeloContato = new Model.Contato();
+        Model.Usuario modeloUsuario = new Model.Usuario();
+
+        Business.Acessos negocioAcessos = new Business.Acessos();
+        Business.Usuario negocioUsuario = new Business.Usuario();
 
         AdicionarContatoWindow addContatoJanela = new AdicionarContatoWindow();
 
@@ -77,9 +81,11 @@ namespace View
 
         public void updateGrid()
         {
-            gridVisualizarContatos.ItemsSource = null;
-            gridVisualizarContatos.ItemsSource = negocioContato.Selecionar().OrderBy(person => person.Nome);
+            int idUser = negocioAcessos.Selecionar().OrderBy(user => user.Data).OrderBy(x => x.Data).Take(1).Single().IdUsuario;
+            string nomeUser = negocioUsuario.Selecionar().Where(person => person.Id == idUser).Single().Login;
 
+            gridVisualizarContatos.ItemsSource = null;
+            gridVisualizarContatos.ItemsSource = negocioContato.Selecionar(nomeUser).OrderBy(person => person.Nome);
 
         }
 
@@ -101,13 +107,16 @@ namespace View
 
         private void ApagarUsuarioClick(object sender, RoutedEventArgs e)
         {
+            int idUser = negocioAcessos.Selecionar().OrderBy(user => user.Data).OrderBy(x => x.Data).Take(1).Single().IdUsuario;
+            string nomeUser = negocioUsuario.Selecionar().Where(person => person.Id == idUser).Single().Login;
+
             modeloContato = gridVisualizarContatos.SelectedItem as Model.Contato;
 
             MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Deseja realmente DELETAR esse usuário?", "Confirmação", System.Windows.MessageBoxButton.YesNo);
 
             if (messageBoxResult == MessageBoxResult.Yes)
             {
-                negocioContato.Deletar(modeloContato);
+                negocioContato.Deletar(modeloContato, nomeUser);
             }
 
             updateGrid();
@@ -128,6 +137,9 @@ namespace View
 
         private void AtualizarContato_Click(object sender, RoutedEventArgs e)
         {
+            int idUser = negocioAcessos.Selecionar().OrderBy(user => user.Data).OrderBy(x => x.Data).Take(1).Single().IdUsuario;
+            string nomeUser = negocioUsuario.Selecionar().Where(person => person.Id == idUser).Single().Login;
+
             try
             {
                 modeloContato = gridVisualizarContatos.SelectedItem as Model.Contato;
@@ -136,7 +148,7 @@ namespace View
                 modeloContato.Telefone = textuserTelefoneEditar.Text;
                 modeloContato.Email = textuserEmailEditar.Text;
 
-                negocioContato.Atualizar(modeloContato);
+                negocioContato.Atualizar(modeloContato, nomeUser);
 
                 MessageBox.Show("Contato atualizado com sucesso!");
             }
@@ -167,23 +179,23 @@ namespace View
 
         private void Pesquisar_Click(object sender, RoutedEventArgs e)
         {
-
+            string nomeUser = modeloUsuario.Login;
             string opcao = userPesquisaContatoComboBox.Text;
             string dado = textUserPesquisarContatos.Text;
 
             if (opcao == "Nome")
             {
-                var users = negocioContato.Selecionar().Where(person => person.Nome == dado).ToList();
+                var users = negocioContato.Selecionar(nomeUser).Where(person => person.Nome == dado).ToList();
                 updateGrid();
             }
             else if (opcao == "E-mail")
             {
-                var users = negocioContato.Selecionar().Where(person => person.Email == dado).ToList();
+                var users = negocioContato.Selecionar(nomeUser).Where(person => person.Email == dado).ToList();
                 updateGrid();
             }
             else if (opcao == "Telefone")
             {
-                var users = negocioContato.Selecionar().Where(person => person.Telefone == dado).ToList();
+                var users = negocioContato.Selecionar(nomeUser).Where(person => person.Telefone == dado).ToList();
                 updateGrid();
             }
 
