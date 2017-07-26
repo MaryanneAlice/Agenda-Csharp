@@ -33,7 +33,7 @@ namespace View
             admLoginLabelEditar.Visibility = System.Windows.Visibility.Collapsed;
             admSenhaLabelEditar.Visibility = System.Windows.Visibility.Collapsed;
             admAddLabelEditar.Visibility = System.Windows.Visibility.Collapsed;
-            textLoginEditar.Visibility = System.Windows.Visibility.Collapsed;
+            textLoginEditar.Visibility = System.Windows.Visibility.Collapsed; 
             textSenhaEditar.Visibility = System.Windows.Visibility.Collapsed;
             admUserComboBoxEditar.Visibility = System.Windows.Visibility.Collapsed;
             btn_Atualizar.Visibility = System.Windows.Visibility.Collapsed;
@@ -167,6 +167,5 @@ namespace View
                 textLoginEditar.Text = u.Login;
             }
         }
-
     }
 }
