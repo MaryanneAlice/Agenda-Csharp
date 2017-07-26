@@ -1,7 +1,0 @@
-C:\Users\marya\Documents\Visual Studio 2017\Projects\agenda-Csharp\Model\bin\Debug\Model.dll
-C:\Users\marya\Documents\Visual Studio 2017\Projects\agenda-Csharp\Model\bin\Debug\Model.pdb
-C:\Users\marya\Documents\Visual Studio 2017\Projects\agenda-Csharp\Model\bin\Debug\Newtonsoft.Json.dll
-C:\Users\marya\Documents\Visual Studio 2017\Projects\agenda-Csharp\Model\bin\Debug\Newtonsoft.Json.xml
-C:\Users\marya\Documents\Visual Studio 2017\Projects\agenda-Csharp\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
-C:\Users\marya\Documents\Visual Studio 2017\Projects\agenda-Csharp\Model\obj\Debug\Model.dll
-C:\Users\marya\Documents\Visual Studio 2017\Projects\agenda-Csharp\Model\obj\Debug\Model.pdb
