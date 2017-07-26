@@ -121,7 +121,6 @@ namespace View
             btn_Atualizar.Visibility = System.Windows.Visibility.Visible;
             btn_Fechar.Visibility = System.Windows.Visibility.Visible;
             gridVisualizacaoAdm.Margin = new Thickness(-360, 120, 0, 0);
-
         }
 
         private void AtualizarUsuario_Click(object sender, RoutedEventArgs e)
